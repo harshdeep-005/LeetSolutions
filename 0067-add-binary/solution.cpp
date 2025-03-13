@@ -1,0 +1,91 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        int n=a.size(), m=b.size(), carry=0;
+        string ans="";
+        while(m>0&&n>0){
+            m--,n--;
+            int x= a[n] - '0', y=b[m] - '0';
+            if(x==1&&y==1){
+                if(carry==0){
+                    ans="0"+ans;
+                    carry=1;
+                }
+                else{
+                    ans="1"+ans;
+                    carry=1;
+                }
+            }
+            if((x==1&&y==0)||(y==1&&x==0)){
+                if(carry==0){
+                    ans="1"+ans;
+                    carry=0;
+                }
+                else{
+                    ans="0"+ans;
+                    carry=1;
+                }
+            }
+            if(x==0&&y==0){
+                if(carry==0){
+                    ans="0"+ans;
+                    carry=0;
+                }
+                else{
+                    ans="1"+ans;
+                    carry=0;
+                }
+            }
+        }
+        while(n>0){
+            n--;
+            int x= a[n] - '0';
+            if(x==1){
+                if(carry==0){
+                    ans="1"+ans;
+                    carry=0;
+                }
+                else{
+                    ans="0"+ans;
+                    carry=1;
+                }
+            }
+            else{
+                if(carry==0){
+                    ans="0"+ans;
+                    carry=0;
+                }
+                else{
+                    ans="1"+ans;
+                    carry=0;
+                }
+            }
+        }
+        while(m>0){
+            m--;
+            int x= b[m] - '0';
+            if(x==1){
+                if(carry==0){
+                    ans="1"+ans;
+                    carry=0;
+                }
+                else{
+                    ans="0"+ans;
+                    carry=1;
+                }
+            }
+            else{
+                if(carry==0){
+                    ans="0"+ans;
+                    carry=0;
+                }
+                else{
+                    ans="1"+ans;
+                    carry=0;
+                }
+            }
+        }
+        if(carry==1)ans="1"+ans;
+        return ans;
+    }
+};
