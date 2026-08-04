@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run LeetCode Sync
-        uses: dos-m0nk3y/LeetCode-Synchronizer@v1.1.0
+        uses: joshuavb/LeetCode-Synchronizer@v1.2.3
         with:
           GITHUB_TOKEN: ${{ github.token }}
           LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
